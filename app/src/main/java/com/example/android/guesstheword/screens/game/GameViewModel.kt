@@ -18,10 +18,12 @@ package com.example.android.guesstheword.screens.game
 
 import android.os.CountDownTimer
 import android.text.format.DateUtils
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import javax.security.auth.login.LoginException
 
 private val CORRECT_BUZZ_PATTERN = longArrayOf(100, 100, 100, 100, 100, 100)
 private val PANIC_BUZZ_PATTERN = longArrayOf(0, 200)
@@ -31,6 +33,7 @@ private val NO_BUZZ_PATTERN = longArrayOf(0)
 /**
  * ViewModel containing all the logic needed to run the game
  */
+
 class GameViewModel : ViewModel() {
 
     // These are the three different types of buzzing in the game. Buzz pattern is the number of
@@ -120,9 +123,9 @@ class GameViewModel : ViewModel() {
         timer.start()
     }
 
-    /**
-     * Resets the list of words and randomizes the order
-     */
+     /* Resets the list of words and randomizes the order*/
+
+
     private fun resetList() {
         wordList = mutableListOf(
                 "queen",
@@ -150,9 +153,9 @@ class GameViewModel : ViewModel() {
         wordList.shuffle()
     }
 
-    /**
-     * Moves to the next word in the list
-     */
+    /* Moves to the next word in the list*/
+
+
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
@@ -161,7 +164,8 @@ class GameViewModel : ViewModel() {
         _word.value = wordList.removeAt(0)
     }
 
-    /** Methods for buttons presses **/
+/* Methods for buttons presses */
+
 
     fun onSkip() {
         _score.value = (_score.value)?.minus(1)
@@ -174,7 +178,8 @@ class GameViewModel : ViewModel() {
         nextWord()
     }
 
-    /** Methods for completed events **/
+/* Methods for completed events */
+
 
     fun onGameFinishComplete() {
         _eventGameFinish.value = false

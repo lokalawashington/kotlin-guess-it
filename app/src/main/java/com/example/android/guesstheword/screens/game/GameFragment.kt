@@ -35,10 +35,12 @@ import com.example.android.guesstheword.databinding.GameFragmentBinding
 /**
  * Fragment where the game is played
  */
+
+
+
 class GameFragment : Fragment() {
 
-    private lateinit var viewModel: GameViewModel
-
+    private lateinit var viewModel :GameViewModel
     private lateinit var binding: GameFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
